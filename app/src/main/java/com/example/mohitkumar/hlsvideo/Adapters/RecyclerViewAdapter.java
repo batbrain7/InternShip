@@ -39,9 +39,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(final RecyclerViewHolder holder, int position) {
-        String s = arraylist.get(position);
+        final String s = arraylist.get(position);
         final MediaPlayer[] mediaPlayer = {new MediaPlayer()};
-        final String VIDEO_PATH =  "http://playertest.longtailvideo.com/adaptive/bbbfull/bbbfull.m3u8";
         holder.surfaceholder = holder.surfaceView.getHolder();
         holder.surfaceholder.addCallback(new SurfaceHolder.Callback() {
             @Override
@@ -49,7 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 mediaPlayer[0] = new MediaPlayer();
                 mediaPlayer[0].setDisplay(holder.surfaceholder);
                 try {
-                    mediaPlayer[0].setDataSource(VIDEO_PATH);
+                    mediaPlayer[0].setDataSource(s);
                     mediaPlayer[0].prepare();
                     mediaPlayer[0].setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
